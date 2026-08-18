@@ -58,11 +58,11 @@ export function BlueprintNav() {
           </a>
           <button
             onClick={() => setOpen((v) => !v)}
-            className="rounded-md border border-border px-3 py-1.5 font-mono text-[10px] tracking-[0.16em] uppercase transition-colors hover:border-signal/50 xl:hidden"
+            className="rounded-md border border-border px-3 py-1.5 font-mono text-[10px] tracking-[0.16em] uppercase transition-colors hover:border-signal/50 2xl:hidden"
           >
             {open ? "Close" : "Contents"}
           </button>
-          <span className="hidden font-mono text-[10px] text-muted-foreground xl:inline">
+          <span className="hidden font-mono text-[10px] text-muted-foreground 2xl:inline">
             {Math.round(progress)}%
           </span>
         </div>
@@ -72,7 +72,7 @@ export function BlueprintNav() {
       </div>
 
       {open && (
-        <div className="fixed inset-x-0 top-14 z-40 max-h-[70vh] overflow-y-auto border-b border-border bg-background/98 p-4 backdrop-blur xl:hidden">
+        <div className="fixed inset-x-0 top-14 z-40 max-h-[70vh] overflow-y-auto border-b border-border bg-background/98 p-4 backdrop-blur 2xl:hidden">
           <ol className="grid gap-1 sm:grid-cols-2">
             {sections.map(([id, label], i) => (
               <li key={id}>
@@ -93,7 +93,7 @@ export function BlueprintNav() {
         </div>
       )}
 
-      <nav className="fixed top-1/2 left-6 z-40 hidden -translate-y-1/2 xl:block">
+      <nav className="fixed top-1/2 left-6 z-40 hidden -translate-y-1/2 2xl:block">
         <ol className="space-y-1">
           {sections.map(([id, label], i) => (
             <li key={id}>

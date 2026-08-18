@@ -71,23 +71,25 @@ export function Section({
     <section
       id={id}
       className={cn(
-        "scroll-mt-20 border-t border-border/70 px-5 py-20 sm:px-8 md:py-28",
-        alt && "bg-surface/40",
+        "scroll-mt-24 border-t border-border/70 px-5 py-24 sm:px-8 md:py-36",
+        alt && "bg-surface-2/60",
       )}
     >
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <header className="mb-12 max-w-3xl md:mb-16">
+          <header className="mb-14 max-w-3xl md:mb-20">
             <div className="flex items-center gap-3">
-              <span className="font-mono text-xs text-signal">
+              <span className="icon-chip size-7 font-mono text-[11px] font-semibold">
                 {String(index).padStart(2, "0")}
               </span>
-              <span className="h-px w-8 bg-border" />
+              <span className="h-px w-10 bg-gradient-to-r from-signal/60 to-transparent" />
               <Kicker>{kicker}</Kicker>
             </div>
-            <h2 className="mt-5 text-3xl leading-[1.08] text-balance md:text-5xl">{title}</h2>
+            <h2 className="mt-6 text-3xl leading-[1.05] tracking-tight text-balance md:text-[3.25rem]">
+              {title}
+            </h2>
             {lede ? (
-              <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
+              <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
                 {lede}
               </p>
             ) : null}
@@ -113,9 +115,9 @@ export function Panel({
   action?: ReactNode;
 }) {
   return (
-    <div className={cn("card-elevated p-5 md:p-6", className)}>
+    <div className={cn("card-elevated card-interactive p-6 md:p-8", className)}>
       {(title || eyebrow || action) && (
-        <div className="mb-5 flex items-start justify-between gap-4">
+        <div className="mb-6 flex items-start justify-between gap-4">
           <div>
             {eyebrow ? <Kicker>{eyebrow}</Kicker> : null}
             {title ? (
@@ -133,9 +135,9 @@ export function Panel({
 type TagKind = "verified" | "assumption" | "illustrative";
 
 const tagStyles: Record<TagKind, string> = {
-  verified: "border-verified/40 text-verified bg-verified/10",
-  assumption: "border-assumption/40 text-assumption bg-assumption/10",
-  illustrative: "border-illustrative/40 text-illustrative bg-illustrative/10",
+  verified: "border-verified/30 text-verified bg-verified/8",
+  assumption: "border-assumption/30 text-assumption bg-assumption/8",
+  illustrative: "border-illustrative/30 text-illustrative bg-illustrative/8",
 };
 
 const tagLabels: Record<TagKind, string> = {
@@ -148,7 +150,7 @@ export function DataTag({ kind, label }: { kind: TagKind; label?: string }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 font-mono text-[10px] tracking-[0.14em] uppercase",
+        "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[10px] font-semibold tracking-[0.12em] uppercase",
         tagStyles[kind],
       )}
     >
@@ -170,9 +172,15 @@ export function Stat({
   tag?: TagKind;
 }) {
   return (
-    <div className="card-elevated p-5">
-      <div className="font-display text-3xl leading-none text-foreground md:text-4xl">{value}</div>
-      <div className="mt-3 text-sm font-medium text-foreground/90">{label}</div>
+    <div className="card-elevated card-interactive group relative overflow-hidden p-6">
+      <span
+        className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-[image:var(--gradient-signal)] transition-transform duration-500 group-hover:scale-x-100"
+        aria-hidden
+      />
+      <div className="tabular font-display text-3xl leading-none font-semibold tracking-tight text-foreground md:text-4xl">
+        {value}
+      </div>
+      <div className="mt-3 text-sm font-semibold text-foreground/90">{label}</div>
       {note ? <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{note}</p> : null}
       {tag ? (
         <div className="mt-3">
@@ -188,7 +196,7 @@ export function Bullets({ items, className }: { items: ReactNode[]; className?: 
     <ul className={cn("space-y-2.5", className)}>
       {items.map((it, i) => (
         <li key={i} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
-          <span className="mt-2 size-1.5 shrink-0 rounded-full bg-signal/70" />
+          <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-signal shadow-[0_0_0_3px_color-mix(in_oklab,var(--signal)_15%,transparent)]" />
           <span>{it}</span>
         </li>
       ))}
@@ -209,11 +217,11 @@ export function DataTable({
     <div className="card-elevated overflow-x-auto">
       <table className="w-full min-w-[520px] border-collapse text-left text-sm">
         <thead>
-          <tr className="border-b border-border">
+          <tr className="border-b border-border bg-surface-2/70">
             {head.map((h, i) => (
               <th
                 key={i}
-                className="px-4 py-3 font-mono text-[10px] tracking-[0.16em] whitespace-nowrap text-muted-foreground uppercase"
+                className="px-5 py-4 font-mono text-[10px] font-semibold tracking-[0.14em] whitespace-nowrap text-muted-foreground uppercase"
               >
                 {h}
               </th>
@@ -222,14 +230,19 @@ export function DataTable({
         </thead>
         <tbody>
           {rows.map((r, i) => (
-            <tr key={i} className="border-b border-border/60 last:border-0 hover:bg-surface-2/60">
+            <tr
+              key={i}
+              className="group border-b border-border/60 transition-colors last:border-0 hover:bg-signal/[0.05]"
+            >
               {r.map((c, j) => (
                 <td
                   key={j}
                   className={cn(
-                    "px-4 align-top",
-                    dense ? "py-2.5" : "py-3.5",
-                    j === 0 ? "font-medium text-foreground" : "text-muted-foreground",
+                    "px-5 align-top",
+                    dense ? "py-3" : "py-4",
+                    j === 0
+                      ? "relative font-semibold text-foreground before:absolute before:top-2 before:bottom-2 before:left-0 before:w-0.5 before:scale-y-0 before:rounded-full before:bg-[image:var(--gradient-signal)] before:transition-transform before:duration-300 group-hover:before:scale-y-100"
+                      : "text-muted-foreground",
                   )}
                 >
                   {c}
@@ -257,14 +270,16 @@ export function FlowNode({
   return (
     <div
       className={cn(
-        "rounded-md border px-4 py-3 text-center transition-colors",
+        "rounded-xl border px-4 py-3.5 text-center transition-all duration-300 hover:-translate-y-0.5",
         accent
-          ? "border-signal/50 bg-signal/10"
-          : "border-border bg-surface-2/70 hover:border-signal/40",
+          ? "glow-node border-signal/50 bg-signal/10"
+          : "border-border bg-surface shadow-[var(--shadow-lift)] hover:border-signal/40 hover:shadow-[var(--shadow-hover)]",
         className,
       )}
     >
-      <div className="text-sm font-semibold text-foreground">{title}</div>
+      <div className="font-display text-sm font-semibold tracking-tight text-foreground">
+        {title}
+      </div>
       {sub ? <div className="mt-1 text-xs text-muted-foreground">{sub}</div> : null}
     </div>
   );
@@ -272,7 +287,7 @@ export function FlowNode({
 
 export function Note({ children }: { children: ReactNode }) {
   return (
-    <p className="mt-4 border-l-2 border-border pl-4 text-xs leading-relaxed text-muted-foreground">
+    <p className="mt-5 rounded-r-md border-l-2 border-signal/40 bg-surface-2/60 py-2.5 pr-3 pl-4 text-xs leading-relaxed text-muted-foreground">
       {children}
     </p>
   );

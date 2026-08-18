@@ -219,7 +219,7 @@ export function S20Conclusion() {
       alt
     >
       <div className="grid gap-5 lg:grid-cols-[1.2fr_1fr]">
-        <Panel className="relative overflow-hidden">
+        <Panel className="on-navy relative overflow-hidden">
           <div className="grid-paper pointer-events-none absolute inset-0 opacity-25" aria-hidden />
           <div className="relative">
             <Kicker>The vision</Kicker>

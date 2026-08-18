@@ -45,7 +45,7 @@ export function S9Locations() {
               ["Manager", "Scoped account for one store"],
             ].map(([t, s], i, a) => (
               <div key={t}>
-                <FlowNode title={t} sub={s} accent={i === 0} />
+                <FlowNode title={t as string} sub={s as string} accent={i === 0} />
                 {i < a.length - 1 && (
                   <div className="flex justify-center py-1">
                     <span className="h-4 w-px bg-border" />
@@ -324,12 +324,14 @@ export function S12Corporate() {
               <XAxis dataKey="m" {...axisProps} />
               <YAxis {...axisProps} />
               <Tooltip {...tooltipProps} />
-              {[
-                ["downtown", "var(--chart-1)"],
-                ["airport", "var(--chart-2)"],
-                ["campus", "var(--chart-3)"],
-                ["mall", "var(--chart-4)"],
-              ].map(([k, c]) => (
+              {(
+                [
+                  ["downtown", "var(--chart-1)"],
+                  ["airport", "var(--chart-2)"],
+                  ["campus", "var(--chart-3)"],
+                  ["mall", "var(--chart-4)"],
+                ] as const
+              ).map(([k, c]) => (
                 <Line key={k} type="monotone" dataKey={k} stroke={c} strokeWidth={2} dot={false} />
               ))}
             </LineChart>

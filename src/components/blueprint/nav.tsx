@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
-export const sections = [
+export const sections: [string, string][] = [
   ["executive-summary", "Executive Summary"],
   ["problem", "The Problem"],
   ["opportunity", "Opportunity"],
@@ -22,7 +22,7 @@ export const sections = [
   ["implementation", "Implementation"],
   ["investment", "Investment"],
   ["conclusion", "Conclusion"],
-] as const;
+];
 
 export function BlueprintNav() {
   const [active, setActive] = useState<string>(sections[0][0]);

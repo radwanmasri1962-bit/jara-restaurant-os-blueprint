@@ -141,7 +141,7 @@ export function S6Architecture() {
               </div>
               <div className="grid gap-3 sm:grid-cols-3">
                 {layer.nodes.map((n) => (
-                  <FlowNode key={n.t} title={n.t} sub={n.s} accent={layer.accent} />
+                  <FlowNode key={n.t} title={n.t} sub={n.s} accent={!!layer.accent} />
                 ))}
               </div>
               {li < archLayers.length - 1 && (

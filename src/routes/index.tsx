@@ -1,24 +1,56 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { BlueprintNav } from "@/components/blueprint/nav";
+import { Hero, S1ExecutiveSummary, S2Problem, S3Opportunity, S4ProductVision } from "@/components/blueprint/part1";
+import { S5Journey, S6Architecture, S7Features, S8Menu } from "@/components/blueprint/part2";
+import { S9Locations, S10Voice, S11ManagerDashboard, S12Corporate } from "@/components/blueprint/part3";
+import { S13Financial, S14BusinessModel, S15Competition, S16Roadmap } from "@/components/blueprint/part4";
+import { S17Risks, S18Implementation, S19Investment, S20Conclusion } from "@/components/blueprint/part5";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "JARA RestaurantOS — Strategic Blueprint";
+const description =
+  "Internal executive blueprint for JARA RestaurantOS: architecture, menu engine, voice ordering, financial model, roadmap, risks, and investment plan.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "article" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div id="top" className="min-h-screen bg-background">
+      <BlueprintNav />
+      <main className="pt-14">
+        <Hero />
+        <S1ExecutiveSummary />
+        <S2Problem />
+        <S3Opportunity />
+        <S4ProductVision />
+        <S5Journey />
+        <S6Architecture />
+        <S7Features />
+        <S8Menu />
+        <S9Locations />
+        <S10Voice />
+        <S11ManagerDashboard />
+        <S12Corporate />
+        <S13Financial />
+        <S14BusinessModel />
+        <S15Competition />
+        <S16Roadmap />
+        <S17Risks />
+        <S18Implementation />
+        <S19Investment />
+        <S20Conclusion />
+      </main>
     </div>
   );
 }

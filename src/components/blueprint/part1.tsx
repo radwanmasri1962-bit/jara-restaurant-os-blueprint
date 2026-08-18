@@ -245,7 +245,7 @@ export function S2Problem() {
           <Reveal key={c.name}>
             <Panel className="h-full">
               <div className="flex items-center gap-3">
-                <span className="grid size-10 place-items-center rounded-md border border-border bg-surface-2">
+                <span className="icon-chip size-11">
                   <c.icon className="size-5 text-signal" />
                 </span>
                 <div>

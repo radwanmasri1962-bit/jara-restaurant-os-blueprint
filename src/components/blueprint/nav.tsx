@@ -25,7 +25,7 @@ export const sections: [string, string][] = [
 ];
 
 export function BlueprintNav() {
-  const [active, setActive] = useState<string>(sections[0][0]);
+  const [active, setActive] = useState<string>("executive-summary");
   const [progress, setProgress] = useState(0);
   const [open, setOpen] = useState(false);
 
@@ -33,7 +33,7 @@ export function BlueprintNav() {
     const onScroll = () => {
       const h = document.documentElement;
       setProgress((h.scrollTop / (h.scrollHeight - h.clientHeight || 1)) * 100);
-      let current = sections[0][0];
+      let current = "executive-summary";
       for (const [id] of sections) {
         const el = document.getElementById(id);
         if (el && el.getBoundingClientRect().top <= 140) current = id;

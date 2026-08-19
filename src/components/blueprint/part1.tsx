@@ -9,6 +9,7 @@ import {
   Note,
   Reveal,
   Kicker,
+  SolutionBridge,
 } from "./primitives";
 import { ChartFrame, axisProps, tooltipProps } from "./chart-frame";
 import {
@@ -316,6 +317,11 @@ export function S2Problem() {
           </div>
         </div>
       </div>
+      <SolutionBridge
+        from="The Restaurant Problem"
+        to="JARA RestaurantOS — one platform, every ordering channel."
+        href="#vision"
+      />
     </Section>
   );
 }

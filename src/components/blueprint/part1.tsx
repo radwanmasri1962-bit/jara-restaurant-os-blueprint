@@ -26,6 +26,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, Cell } from "recharts";
+import jaraLogo from "@/assets/jara-logo-white.png.asset.json";
 
 export function Hero() {
   return (
@@ -38,6 +39,11 @@ export function Hero() {
       />
       <div className="relative mx-auto max-w-6xl">
         <Reveal>
+          <img
+            src={jaraLogo.url}
+            alt="JARA AI"
+            className="mb-10 h-9 w-auto md:h-11"
+          />
           <div className="flex flex-wrap items-center gap-3">
             <span className="rounded-full border border-border bg-surface px-3 py-1 font-mono text-[10px] tracking-[0.2em] uppercase">
               JARA AI — Internal

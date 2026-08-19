@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import jaraLogo from "@/assets/jara-logo-white.png.asset.json";
 
 export const sections: [string, string][] = [
   ["executive-summary", "Executive Summary"],
@@ -49,9 +50,10 @@ export function BlueprintNav() {
     <>
       <div className="fixed top-0 right-0 left-0 z-50 h-14 border-b border-border bg-background/85 backdrop-blur-md">
         <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-5 sm:px-8">
-          <a href="#top" className="flex items-center gap-2.5">
-            <span className="size-2.5 rounded-sm bg-signal" />
-            <span className="font-display text-sm tracking-tight">JARA RestaurantOS</span>
+          <a href="#top" className="flex items-center gap-3">
+            <img src={jaraLogo.url} alt="JARA AI" className="h-6 w-auto" />
+            <span className="h-4 w-px bg-border" aria-hidden />
+            <span className="font-display text-sm font-semibold tracking-tight">RestaurantOS</span>
             <span className="hidden font-mono text-[10px] tracking-[0.2em] text-muted-foreground uppercase sm:inline">
               Blueprint
             </span>

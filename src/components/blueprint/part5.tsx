@@ -271,7 +271,7 @@ export function S20Conclusion() {
         <footer className="mt-16 border-t border-border pt-8">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <div className="font-display text-xl">JARA RestaurantOS</div>
+              <div className="font-display text-xl font-bold">JARA RestaurantOS</div>
               <p className="mt-1 text-xs text-muted-foreground">
                 Strategic Blueprint v1.0 · Internal · Confidential
               </p>

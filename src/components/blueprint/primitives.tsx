@@ -292,3 +292,34 @@ export function Note({ children }: { children: ReactNode }) {
     </p>
   );
 }
+
+/**
+ * Visual bridge that links a "what is broken" block to the JARA answer that
+ * follows. Presentation only — it carries no new content.
+ */
+export function SolutionBridge({
+  from,
+  to,
+  href,
+}: {
+  from: string;
+  to: string;
+  href: string;
+}) {
+  return (
+    <Reveal>
+      <a
+        href={href}
+        className="group mt-8 flex flex-col items-center gap-3 rounded-2xl border border-border/70 bg-surface/50 px-6 py-6 text-center transition-colors hover:border-signal/45 hover:bg-surface"
+      >
+        <span className="kicker text-muted-foreground">{from}</span>
+        <span className="relative flex h-8 w-px justify-center bg-gradient-to-b from-signal/10 via-signal/60 to-signal">
+          <span className="absolute -bottom-1 size-2 rotate-45 border-r border-b border-signal transition-transform duration-300 group-hover:translate-y-1" />
+        </span>
+        <span className="font-display text-base font-semibold tracking-tight text-foreground md:text-lg">
+          {to}
+        </span>
+      </a>
+    </Reveal>
+  );
+}
